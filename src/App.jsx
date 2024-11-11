@@ -8,7 +8,7 @@ import { EXAMPLES } from './data';
 
 function App() {
 
-const [selectedTopic , setSelectedTopic] = useState();
+const [selectedTopic , setSelectedTopic] = useState('');
 
 
 function handleSelect(selectButton){
@@ -17,16 +17,18 @@ function handleSelect(selectButton){
 
 // console.log('App click');
 
+console.log(selectedTopic);
+
 let tabContent = <p> Please select a topic. </p> ;
    
     if(selectedTopic){
       tabContent = (
         <div id='tab-content'>
-              <h3> { EXAMPLES[selectedTopic].title } </h3>
-              <p> { EXAMPLES[selectedTopic].description } </p>
+              <h3> { EXAMPLES[selectedTopic]?.title } </h3>
+              <p> { EXAMPLES[selectedTopic]?.description } </p>
               <pre>
                 <code>
-                   { EXAMPLES[selectedTopic].code }
+                   { EXAMPLES[selectedTopic]?.code }
                 </code>
               </pre>
             </div>
@@ -50,13 +52,13 @@ let tabContent = <p> Please select a topic. </p> ;
              onSelect={ () => {handleSelect('components')} } >Components</TabButten>
 
              <TabButten  isSelected={selectedTopic === 'JSX'}
-              onSelect={ () => {handleSelect('JSX')} } >JSX</TabButten>
+              onSelect={ () => {handleSelect('jsx')} } >JSX</TabButten>
 
              <TabButten  isSelected={selectedTopic === 'Props'}
-              onSelect={ () => {handleSelect('Props')} } >Props</TabButten>
+              onSelect={ () => {handleSelect('props')} } >Props</TabButten>
 
              <TabButten  isSelected={selectedTopic === 'State'}
-              onSelect={ () => {handleSelect('State')} } >State</TabButten>
+              onSelect={ () => {handleSelect('state')} } >State</TabButten>
           </menu>
           
             {tabContent}
